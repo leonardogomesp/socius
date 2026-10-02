@@ -1,5 +1,9 @@
 # Socius — gerenciador pessoal de Valheim
 
+> **🚧 WIP — Projeto em desenvolvimento**
+>
+> O Socius ainda está em desenvolvimento e será atualizado com o tempo. Funcionalidades, interface e documentação podem mudar conforme o projeto evolui.
+
 Painel para PC que administra um servidor vanilla, guarda configuracoes por mundo e protege saves com backups verificados. O servidor continua funcionando com o cliente do jogo fechado.
 
 ## Instalar e abrir
