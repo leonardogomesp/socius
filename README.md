@@ -18,7 +18,7 @@ Abra **http://127.0.0.1:3000**. Desenvolvimento: `npm run dev` e http://127.0.0.
 
 O setup configura apenas a instalacao. Mundos, senhas e portas sao configurados pela tela **Mundos**, sem editar arquivos. Mantenha o PC ligado e sem suspensao. Backups diarios exigem o painel aberto.
 
-Nesta instalacao, os dados ficam em **D:\SociusData**, fora do OneDrive. O codigo fica na pasta `socius` solicitada. O padrao para novas instalacoes Windows e `%USERPROFILE%\Documents\Codex\socius-data`; ajuste `DATA_DIR` antes do primeiro inicio se necessario.
+No Windows, os dados ficam por padrao em `%USERPROFILE%\Socius`, uma pasta propria do aplicativo. Ajuste `DATA_DIR` no .env para usar outro disco ou diretorio. Instalacoes existentes preservam o caminho ja configurado. Mantenha os dados fora de pastas com sincronizacao de nuvem ativa.
 
 ## Usar mundos
 
