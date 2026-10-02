@@ -1,0 +1,43 @@
+name: valheim-personal
+services:
+  valheim:
+    image: ${VALHEIM_IMAGE:?Execute npm run setup}
+    container_name: valheim-personal-server
+    labels:
+      dev.leonardogomes.valheim-manager: 'true'
+    restart: 'no'
+    stop_grace_period: 120s
+    environment:
+      SERVER_NAME: ${SERVER_NAME:?Configure SERVER_NAME}
+      WORLD_NAME: ${WORLD_NAME:?Configure WORLD_NAME}
+      SERVER_PASS: ${SERVER_PASS:?Configure SERVER_PASS}
+      SERVER_PORT: ${SERVER_PORT:-2456}
+      SERVER_PUBLIC: ${SERVER_PUBLIC:-false}
+      CROSSPLAY: ${CROSSPLAY:-true}
+      TZ: America/Sao_Paulo
+      UPDATE_CRON: ''
+      RESTART_CRON: ''
+      BACKUPS: 'false'
+      BEPINEX: 'false'
+      VALHEIM_PLUS: 'false'
+      PRE_SERVER_RUN_HOOK: 'rm -f /tmp/valheim-ready'
+      POST_SERVER_LISTENING_HOOK: 'touch /tmp/valheim-ready'
+      PRE_SERVER_SHUTDOWN_HOOK: 'rm -f /tmp/valheim-ready'
+      POST_SERVER_RUN_HOOK: 'rm -f /tmp/valheim-ready'
+    ports:
+      - '${SERVER_PORT:-2456}:${SERVER_PORT:-2456}/udp'
+      - '${QUERY_PORT:-2457}:${QUERY_PORT:-2457}/udp'
+    volumes:
+      - ${CONFIG_DIR:?Selecione um mundo pelo Socius}:/config
+      - ${DATA_DIR:?Execute npm run setup}/server:/opt/valheim
+    healthcheck:
+      test: ['CMD', 'test', '-f', '/tmp/valheim-ready']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20m
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '3'
