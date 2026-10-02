@@ -1,0 +1,8 @@
+node_modules
+dist
+data
+coverage
+package-lock.json
+docs/screenshots
+.env*
+!.env.example
